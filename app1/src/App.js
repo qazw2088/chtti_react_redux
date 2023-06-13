@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./App.css";
+import Banner from "./components/Banner";
 import Dashboard from "./components/Dashboard";
 import Person from "./components/Person";
 import Pet from "./components/Pet";
@@ -11,6 +12,7 @@ class App extends Component {
       { name: "Tim", age: 35 },
       { NAME: "kEVIN", AGE: 50 },
     ],
+    title: "Hello React",
   };
   changeNameHandler = (leaderName) => {
     console.log("button is clicked");
@@ -25,15 +27,28 @@ class App extends Component {
     });
   };
 
+  titleChangeListener = (event) => {
+    this.setState({ title: event.target.value });
+  };
+
   render() {
     return (
       <div className="App">
+        <Banner
+          inputCallback={this.titleChangeListener}
+          value={this.state.title}
+        />
+        <p>{this.state.title}</p>
         <Dashboard />
-        <button onClick={this.changeNameHandler.bind(this, "Iron Man")}>
+        <button
+          onClick={() => {
+            this.changeNameHandler("Iron Man");
+          }}
+        >
           Change
         </button>
         <Person
-          clickCallback={this.changeNameHandler.bind(this, "Bat Man")}
+          clickCallback={() => this.changeNameHandler("Bat Man")}
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
         />
