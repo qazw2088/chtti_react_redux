@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class Pets extends Component {
+export default class Pet extends Component {
   render() {
     return (
       <div>
