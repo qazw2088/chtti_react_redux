@@ -29,11 +29,15 @@ class App extends Component {
     return (
       <div className="App">
         <Dashboard />
-        <button onClick={this.changeNameHandler.bind(this, "Iron Man")}>
+        <button
+          onClick={() => {
+            this.changeNameHandler("Iron Man");
+          }}
+        >
           Change
         </button>
         <Person
-          clickCallback={this.changeNameHandler.bind(this, "Bat Man")}
+          clickCallback={() => this.changeNameHandler("Bat Man")}
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
         />
