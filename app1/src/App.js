@@ -1,16 +1,23 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 import "./App.css";
+import Dashboard from "./components/Dashboard";
+import Person from "./components/Person";
+import Pets from "./components/Pets";
+
 class App extends Component {
   render() {
-    console.log("App render called");
     return (
       <div className="App">
-        <h1>Hi</h1>
-        <h1>I am Mark</h1>
+        <Dashboard />
+        <Person name="Mark" age="46" />
+        <Pets name="King" specie="cat"></Pets>
+        <Person name="James" age="39" />
+        <Person name="Tim" age="35">
+          Team Leader
+        </Person>
+        <Person name="Kevin" age="50" />
       </div>
-      // React.createElement('div',{className:'App'},React.createElement('h1', null,'Hi'),
-      // React.createElement('h1',null,'I am Mark'))
     );
   }
 }
