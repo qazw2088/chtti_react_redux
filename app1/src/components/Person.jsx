@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 
 const Person = (props) => {
-  // let publisher = "marvel studio";
-  const [vendor, setVendor] = useState({ publisher: "marvel studio" });
+  //let publisher = "marvel studio"
+  const [vendor, setVendor] = useState({
+    publisher: "marvel studio",
+    studio: "Disney",
+    deliber: "Uber",
+    snack: "Mos Burger",
+  });
   const switchVendorHandler = () => {
-    console.log("original publisher=", vendor.publisher);
-    // vendor.publisher = "DC commic"; //WRONG!!!!
-    setVendor({ publisher: "DC commic" });
-    console.log("after change, publisher=", vendor.publisher);
+    setVendor({
+      ...vendor,
+      publisher: "DC comics",
+    });
   };
-  console.log(`inside Person, prpos.name=${props.name}`);
+  const showVendor = () => console.log("vendor=", vendor);
   return (
     <div>
-      <h3>Publisher={vendor.publisher}</h3>
+      <h3>
+        Publisher={vendor.publisher}, studio={vendor.studio}
+      </h3>
       <button onClick={switchVendorHandler}>Change league</button>
-      <p>I am {props.name}</p>
+      <button onClick={showVendor}>show vendor</button>
+      <h1 onClick={props.clickCallback}>I am {props.name}</h1>
       <p>I am {props.age} years old</p>
       <p style={{ color: "red", fontWeight: "bold" }}>
         My job is {props.children}

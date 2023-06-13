@@ -31,6 +31,7 @@ class App extends Component {
         <Dashboard />
         <button onClick={this.changeNameHandler}>Change</button>
         <Person
+          clickCallback={this.changeNameHandler}
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
         />
