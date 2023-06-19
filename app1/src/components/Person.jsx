@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import css from "./Person.css";
+import "./Person.css";
 
 const Person = (props) => {
   //let publisher = "marvel studio"

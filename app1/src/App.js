@@ -32,6 +32,14 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "yellow",
+      font: "inherit",
+      border: "1px solid red",
+      padding: "4px",
+      cursor: "pointer",
+    };
+
     return (
       <div className="App">
         <Banner
@@ -44,6 +52,7 @@ class App extends Component {
           onClick={() => {
             this.changeNameHandler("Iron Man");
           }}
+          style={this.style}
         >
           Change
         </button>
