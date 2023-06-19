@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
   background-color: aqua;
   margin: auto;
   width: 60%;
-  border: 3px solid #ffff00;
+  border: 3px solid #ff00ff;
   box-shadow: 0 2px 3px #ffcc00;
   padding: 16px;
   text-align: center;
