@@ -3,7 +3,7 @@ import "./App.css";
 import Banner from "./components/Banner";
 import Dashboard from "./components/Dashboard";
 import Person from "./components/Person";
-import Radium, { StyleRoot } from "radium";
+// import Radium, { StyleRoot } from "radium";
 // import Pet from "./components/Pet";
 
 class App extends Component {
@@ -89,38 +89,36 @@ class App extends Component {
       classes.push("bold");
     }
     return (
-      <StyleRoot>
-        <div className="App">
-          <p className={classes.join(" ")}>This is my firt react style app</p>
-          <button
-            key={"first_button"}
-            onClick={() => {
-              this.toggleDisplayHander();
-            }}
-            style={myStyle}
-          >
-            Hide/Show
-          </button>
-          <Banner
-            inputCallback={this.titleChangeListener}
-            value={this.state.title}
-          />
-          <p>{this.state.title}</p>
-          <Dashboard />
-          <button
-            key={"second_button"}
-            onClick={() => {
-              this.changeNameHandler("Iron Man");
-            }}
-            style={myStyle}
-          >
-            Change
-          </button>
-          {this.state.showPerson === true ? persons : null}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <p className={classes.join(" ")}>This is my firt react style app</p>
+        <button
+          key={"first_button"}
+          onClick={() => {
+            this.toggleDisplayHander();
+          }}
+          style={myStyle}
+        >
+          Hide/Show
+        </button>
+        <Banner
+          inputCallback={this.titleChangeListener}
+          value={this.state.title}
+        />
+        <p>{this.state.title}</p>
+        <Dashboard />
+        <button
+          key={"second_button"}
+          onClick={() => {
+            this.changeNameHandler("Iron Man");
+          }}
+          style={myStyle}
+        >
+          Change
+        </button>
+        {this.state.showPerson === true ? persons : null}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;

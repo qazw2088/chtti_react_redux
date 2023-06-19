@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import "./Person.css";
-import Radium from "radium";
+import styled from "styled-components";
+// import Radium from "radium";
+
+const StyledDiv = styled.div`
+  background-color: aqua;
+  margin: auto;
+  width: 60%;
+  border: 3px solid #ffff00;
+  box-shadow: 0 2px 3px #ffcc00;
+  padding: 16px;
+  text-align: center;
+  @media (min-width: 500px) : {
+    width: 400px;
+  }
+`;
+
 const Person = (props) => {
   //let publisher = "marvel studio"
-
-  const style = {
-    "@media (min-width:500px)": { width: "1000px" },
-  };
 
   const [vendor, setVendor] = useState({
     publisher: "marvel studio",
@@ -22,7 +33,7 @@ const Person = (props) => {
   };
   const showVendor = () => console.log("vendor=", vendor);
   return (
-    <div className="Person" style={style}>
+    <StyledDiv>
       <h3>
         Publisher={vendor.publisher}, studio={vendor.studio}
       </h3>
@@ -34,8 +45,8 @@ const Person = (props) => {
         My job is {props.children}
       </p>
       <p>I am in chtti, I attended {Math.floor(Math.random() * 5)} courses</p>
-    </div>
+    </StyledDiv>
   );
 };
 
-export default Radium(Person);
+export default Person;
