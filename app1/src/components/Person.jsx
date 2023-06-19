@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import "./Person.css";
-
+import Radium from "radium";
 const Person = (props) => {
   //let publisher = "marvel studio"
+
+  const style = {
+    "@media (min-width:500px)": { width: "1000px" },
+  };
+
   const [vendor, setVendor] = useState({
     publisher: "marvel studio",
     studio: "Disney",
@@ -17,7 +22,7 @@ const Person = (props) => {
   };
   const showVendor = () => console.log("vendor=", vendor);
   return (
-    <div className="Person">
+    <div className="Person" style={style}>
       <h3>
         Publisher={vendor.publisher}, studio={vendor.studio}
       </h3>
@@ -33,4 +38,4 @@ const Person = (props) => {
   );
 };
 
-export default Person;
+export default Radium(Person);

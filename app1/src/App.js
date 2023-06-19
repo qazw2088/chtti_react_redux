@@ -3,7 +3,9 @@ import "./App.css";
 import Banner from "./components/Banner";
 import Dashboard from "./components/Dashboard";
 import Person from "./components/Person";
-import Pet from "./components/Pet";
+import Radium, { StyleRoot } from "radium";
+// import Pet from "./components/Pet";
+
 class App extends Component {
   state = {
     persons: [
@@ -53,6 +55,7 @@ class App extends Component {
       border: "1px solid red",
       padding: "4px",
       cursor: "pointer",
+      ":hover": { backgroundColor: "lightblue", color: "black" },
     };
     let persons = null;
     if (this.state.showPerson === true) {
@@ -72,6 +75,10 @@ class App extends Component {
       );
       myStyle.backgroundColor = "red";
       myStyle.color = "black";
+      myStyle[":hover"] = {
+        backgroundColor: "lightred",
+        color: "black",
+      };
     }
     // const classes = ["blue", "bold"].join(" ");
     const classes = [];
@@ -82,34 +89,38 @@ class App extends Component {
       classes.push("bold");
     }
     return (
-      <div className="App">
-        <p className={classes.join(" ")}>This is my firt react style app</p>
-        <button
-          onClick={() => {
-            this.toggleDisplayHander();
-          }}
-          style={myStyle}
-        >
-          Hide/Show
-        </button>
-        <Banner
-          inputCallback={this.titleChangeListener}
-          value={this.state.title}
-        />
-        <p>{this.state.title}</p>
-        <Dashboard />
-        <button
-          onClick={() => {
-            this.changeNameHandler("Iron Man");
-          }}
-          style={myStyle}
-        >
-          Change
-        </button>
-        {this.state.showPerson === true ? persons : null}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <p className={classes.join(" ")}>This is my firt react style app</p>
+          <button
+            key={"first_button"}
+            onClick={() => {
+              this.toggleDisplayHander();
+            }}
+            style={myStyle}
+          >
+            Hide/Show
+          </button>
+          <Banner
+            inputCallback={this.titleChangeListener}
+            value={this.state.title}
+          />
+          <p>{this.state.title}</p>
+          <Dashboard />
+          <button
+            key={"second_button"}
+            onClick={() => {
+              this.changeNameHandler("Iron Man");
+            }}
+            style={myStyle}
+          >
+            Change
+          </button>
+          {this.state.showPerson === true ? persons : null}
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
