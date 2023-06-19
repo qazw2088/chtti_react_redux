@@ -49,26 +49,9 @@ class App extends Component {
     if (this.state.showPerson === true) {
       persons = (
         <div>
-          <Person
-            clickCallback={() => this.changeNameHandler("Bat Man")}
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Pet name="King" specie="cat" />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-          />
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          >
-            Team Leader
-          </Person>
-          <Person
-            name={this.state.persons[3].name}
-            age={this.state.persons[3].age}
-          />
+          {this.state.persons.map((person, index) => {
+            return <Person key={index} name={person.name} age={person.age} />;
+          })}
         </div>
       );
     }
@@ -97,31 +80,7 @@ class App extends Component {
         >
           Change
         </button>
-        {this.state.showPerson === true
-          ? { persons }
-          : // <div>
-            //   <Person
-            //     clickCallback={() => this.changeNameHandler("Bat Man")}
-            //     name={this.state.persons[0].name}
-            //     age={this.state.persons[0].age}
-            //   />
-            //   <Pet name="King" specie="cat" />
-            //   <Person
-            //     name={this.state.persons[1].name}
-            //     age={this.state.persons[1].age}
-            //   />
-            //   <Person
-            //     name={this.state.persons[2].name}
-            //     age={this.state.persons[2].age}
-            //   >
-            //     Team Leader
-            //   </Person>
-            //   <Person
-            //     name={this.state.persons[3].name}
-            //     age={this.state.persons[3].age}
-            //   />
-            // </div>
-            null}
+        {this.state.showPerson === true ? persons : null}
       </div>
     );
   }
