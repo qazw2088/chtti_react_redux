@@ -3,23 +3,10 @@ import "./App.css";
 import Banner from "./components/Banner";
 import Dashboard from "./components/Dashboard";
 import Person from "./components/Person";
-import styled from "styled-components";
+// import styled from "styled-components";
 // import Radium, { StyleRoot } from "radium";
 // import Pet from "./components/Pet";
-
-const StyleButton = styled.button`
-  background-color: ${(props) => (props.alt === "true" ? "blue" : "red")};
-  color: white;
-  font: inherit;
-  border: 1px solid red;
-  padding: 4px;
-  cursor: pointer;
-  &:hover {
-    background-color: ${(props) =>
-      props.alt === "true" ? "lightpink" : "lightskyblue"};
-    color: black;
-  }
-`;
+import styles from "./App.module.css";
 
 class App extends Component {
   state = {
@@ -64,6 +51,7 @@ class App extends Component {
   };
 
   render() {
+    let buttonClass = [styles.Button];
     let persons = null;
     if (this.state.showPerson === true) {
       persons = (
@@ -80,19 +68,21 @@ class App extends Component {
           })}
         </div>
       );
+      buttonClass.push(styles.Green);
     }
     // const classes = ["blue", "bold"].join(" ");
     const classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push("blue");
+      classes.push(styles.Blue);
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      classes.push(styles.Bold);
     }
     return (
-      <div className="App">
+      <div className={styles.App}>
         <p className={classes.join(" ")}>This is my firt react style app</p>
-        <StyleButton
+        <button
+          className={buttonClass.join(" ")}
           alt={this.state.showPerson ? "true" : "false"}
           key={"first_button"}
           onClick={() => {
@@ -100,21 +90,22 @@ class App extends Component {
           }}
         >
           Hide/Show
-        </StyleButton>
+        </button>
         <Banner
           inputCallback={this.titleChangeListener}
           value={this.state.title}
         />
         <p>{this.state.title}</p>
         <Dashboard />
-        <StyleButton
+        <button
+          className={styles.Button}
           key={"second_button"}
           onClick={() => {
             this.changeNameHandler("Iron Man");
           }}
         >
           Change
-        </StyleButton>
+        </button>
         {this.state.showPerson === true ? persons : null}
       </div>
     );
