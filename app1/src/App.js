@@ -13,6 +13,7 @@ class App extends Component {
       { NAME: "kEVIN", AGE: 50 },
     ],
     title: "Hello React",
+    showPerson: false,
   };
   changeNameHandler = (leaderName) => {
     console.log("button is clicked");
@@ -30,6 +31,10 @@ class App extends Component {
   titleChangeListener = (event) => {
     this.setState({ title: event.target.value });
   };
+  toggleDisplayHander = () => {
+    const doesShow = this.state.showPerson;
+    this.setState({ showPerson: !doesShow });
+  };
 
   render() {
     const myStyle = {
@@ -42,6 +47,14 @@ class App extends Component {
 
     return (
       <div className="App">
+        <button
+          onClick={() => {
+            this.toggleDisplayHander();
+          }}
+          style={myStyle}
+        >
+          Hide/Show
+        </button>
         <Banner
           inputCallback={this.titleChangeListener}
           value={this.state.title}
@@ -56,26 +69,30 @@ class App extends Component {
         >
           Change
         </button>
-        <Person
-          clickCallback={() => this.changeNameHandler("Bat Man")}
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Pet name="King" specie="cat" />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-        />
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        >
-          Team Leader
-        </Person>
-        <Person
-          name={this.state.persons[3].name}
-          age={this.state.persons[3].age}
-        />
+        {this.state.showPerson === true ? (
+          <div>
+            <Person
+              clickCallback={() => this.changeNameHandler("Bat Man")}
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+            />
+            <Pet name="King" specie="cat" />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+            />
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            >
+              Team Leader
+            </Person>
+            <Person
+              name={this.state.persons[3].name}
+              age={this.state.persons[3].age}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
