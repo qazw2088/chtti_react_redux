@@ -32,7 +32,7 @@ class App extends Component {
   };
 
   render() {
-    const style = {
+    const myStyle = {
       backgroundColor: "yellow",
       font: "inherit",
       border: "1px solid red",
@@ -52,7 +52,7 @@ class App extends Component {
           onClick={() => {
             this.changeNameHandler("Iron Man");
           }}
-          style={this.style}
+          style={myStyle}
         >
           Change
         </button>
