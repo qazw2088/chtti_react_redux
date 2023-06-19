@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import css from "./Person.css";
 
 const Person = (props) => {
   //let publisher = "marvel studio"
@@ -16,7 +17,7 @@ const Person = (props) => {
   };
   const showVendor = () => console.log("vendor=", vendor);
   return (
-    <div>
+    <div className="Person">
       <h3>
         Publisher={vendor.publisher}, studio={vendor.studio}
       </h3>
