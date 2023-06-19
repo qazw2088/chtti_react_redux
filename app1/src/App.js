@@ -54,7 +54,6 @@ class App extends Component {
       padding: "4px",
       cursor: "pointer",
     };
-
     let persons = null;
     if (this.state.showPerson === true) {
       persons = (
@@ -74,9 +73,17 @@ class App extends Component {
       myStyle.backgroundColor = "red";
       myStyle.color = "black";
     }
-
+    // const classes = ["blue", "bold"].join(" ");
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("blue");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
+    }
     return (
       <div className="App">
+        <p className={classes.join(" ")}>This is my firt react style app</p>
         <button
           onClick={() => {
             this.toggleDisplayHander();
