@@ -1,8 +1,7 @@
-import { BUY_FANTA } from "./FantaTypes"
+import { BUY_FANTA } from "./FantaTypes";
 
-export const buyFanta = (number = 1) => {
+export const buyFanta = () => {
     return {
         type: BUY_FANTA,
-        payload: number
-    }
-}
+    };
+};
