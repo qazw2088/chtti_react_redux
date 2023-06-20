@@ -1,5 +1,4 @@
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
@@ -14,13 +13,19 @@ import DarkModeToggle from "./components/DarkModeToggle";
 function App() {
     const [count, setCount] = useState(0);
     const [themeMode, setThemeMode] = useState("light");
-
+    const _theme = createTheme({
+        palette: {
+            mode: themeMode === "dark" ? "dark" : "light",
+        },
+    });
     const toggleThemeMode = () => {
+        console.log(themeMode);
+        console.log(_theme);
         setThemeMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
     };
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={_theme}>
             <DarkModeToggle onToggle={toggleThemeMode} mode={themeMode} />
             {/* <Counter1 /> */}
             {/* <Counter2 /> */}
