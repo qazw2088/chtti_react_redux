@@ -22,7 +22,10 @@ function Counter3() {
   }
 
   useEffect(() => {
-    console.log("useEffect");
+    console.log("due to re-render, use effect is called");
+    console.log(`[useEffect], counter=${counter}`);
+    console.log(`since bowCounter=${bowCounter}, dishCounter=${dishCounter}`);
+
     if (dishCounter >= 10) {
       setShowDishMessage(true);
     } else {
@@ -35,11 +38,18 @@ function Counter3() {
     }
   }, [dishCounter, bowCounter]);
 
-  let counter = 20;
+  function noUseEffect() {
+    console.log("function inside functional component");
+  }
+
+  // no reactive
+  // let counter = 20;
+  const [counter, setCounter] = useState(20);
   function changeCounter() {
-    counter += 1;
+    setCounter(counter + 1);
     console.log(`[Counter1]counter=${counter}`);
   }
+  noUseEffect();
   return (
     <div>
       <h2>Thie is new useState, useEffect</h2>
