@@ -43,32 +43,12 @@ const reducer = (state = initState, action) => {
             return state;
     }
 };
-const URL = "https://jsonplaceholder.typicode.com/userssssss";
-// async action creator
-// return a function (can do async), pass a dispatcher
-const fetchUsers = () => {
-    return function (dispatch) {
-        dispatch(fetchUserRequest());
-        axios
-            .get(URL)
-            .then((result) => {
-                const users = result.data.map((user) => {
-                    return { name: user.name, id: user.id };
-                });
-                dispatch(fetchUserSuccess(users));
-            })
-            .catch((error) => {
-                dispatch(fetchUserFailure(error.response.statusText));
-            });
-    };
-};
 
 const store = redux.createStore(
     reducer,
     redux.applyMiddleware(thunkMiddleware, logger)
 );
 console.log("init state=", store.getState());
-store.dispatch(fetchUsers());
 // // initial a http request
 // store.dispatch(fetchUserRequest())
 // // communicate with server, and success get users
