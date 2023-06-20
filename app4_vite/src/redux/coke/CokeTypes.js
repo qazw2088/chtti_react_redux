@@ -1,1 +1,1 @@
-export const BUY_COKE = "BUT_COKE";
+export const BUY_COKE = "BUY_COKE"

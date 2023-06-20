@@ -1,5 +1,5 @@
-import { BUY_COKE } from "./CokeTypes";
+import { BUY_COKE } from "./CokeTypes"
 
 export const buyCoke = () => {
-    return { type: BUY_COKE };
-};
+    return { type: BUY_COKE }
+}
