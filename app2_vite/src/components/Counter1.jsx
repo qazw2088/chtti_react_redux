@@ -21,6 +21,7 @@ function Counter1() {
   }
 
   useEffect(() => {
+    // 
     if (dishCounter >= 10) {
       setShowDishMessage(true);
     } else {
@@ -59,6 +60,7 @@ function Counter1() {
       </button>
     </div>
   );
+  
 }
 
 export default Counter1;
